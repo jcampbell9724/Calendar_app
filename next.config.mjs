@@ -7,6 +7,8 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',  // Enable static exports
+  basePath: '/Calendar_app', // The base path for your GitHub Pages repo
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -14,9 +16,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for static export
   },
+  // Disable server-side features for static export
   experimental: {
+    appDir: true,
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
